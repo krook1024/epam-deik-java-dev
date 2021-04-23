@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.29">
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/domain/User.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/service/UserService.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaUserRepository.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/repository/UserRepository.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/configuration/ConfirmationConfiguration.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/configuration/CliConfiguration.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/TicketServicePromptProvider.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/handler/AuthCommandHandler.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/CliApplication.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/dao/UserDao.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/init/UserDatabaseInitializer.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/configuration/JpaConfiguration.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/projection/UserProjection.java">
+</file>
+</checkstyle>

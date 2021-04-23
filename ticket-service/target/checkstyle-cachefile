@@ -1,0 +1,17 @@
+#Fri Apr 23 21:27:30 CEST 2021
+configuration*?=8671C45E240106BB9D8AD838B045B2F378D5F5FA
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/service/UserService.java=1619205781787
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/repository/UserRepository.java=1619205838304
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/handler/AuthCommandHandler.java=1619204468623
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/dao/UserDao.java=1619206031613
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/configuration/JpaConfiguration.java=1619205727076
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/domain/User.java=1619203797256
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaUserRepository.java=1619205834767
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/projection/UserProjection.java=1619205316962
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/TicketServicePromptProvider.java=1619204118846
+module-resource*?\:checkstyle-xpath-suppressions.xml=D73B9FEA220B2EBA072F7A518EBDA4390F2866CA
+module-resource*?\:checkstyle-suppressions.xml=617F2ADBD123F9AA0D1AC4DA44BDC69DF84E3B72
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/init/UserDatabaseInitializer.java=1619205422463
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/configuration/CliConfiguration.java=1619204204472
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/configuration/ConfirmationConfiguration.java=1619204235111
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/CliApplication.java=1619204162773

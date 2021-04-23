@@ -1,0 +1,13 @@
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/service/UserService.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/configuration/JpaConfiguration.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/repository/UserRepository.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/handler/AuthCommandHandler.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/dao/UserDao.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaUserRepository.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/projection/UserProjection.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/domain/User.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/TicketServicePromptProvider.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/init/UserDatabaseInitializer.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/configuration/ConfirmationConfiguration.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/CliApplication.java
+/home/molnara/epam-deik-java-dev/final/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/configuration/CliConfiguration.java
