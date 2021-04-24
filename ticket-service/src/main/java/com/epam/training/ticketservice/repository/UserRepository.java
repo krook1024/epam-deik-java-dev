@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository;
 
 public interface UserRepository {
     void saveUser(User user);
+
+    User findByName(String name);
 }
