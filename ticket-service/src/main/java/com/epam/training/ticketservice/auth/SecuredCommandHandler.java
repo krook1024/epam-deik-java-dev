@@ -5,7 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.shell.Availability;
 
-public abstract class SecuredCommand {
+public abstract class SecuredCommandHandler {
     public Availability isUserSignedIn() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 

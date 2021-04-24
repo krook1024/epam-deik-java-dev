@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public class JpaUserRepository implements UserRepository {
-    private UserDao userDao;
+    private final UserDao userDao;
 
     public JpaUserRepository(UserDao userDao) {
         this.userDao = userDao;

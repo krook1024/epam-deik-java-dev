@@ -1,9 +1,8 @@
 package com.epam.training.ticketservice.presentation.cli.handler;
 
-import com.epam.training.ticketservice.auth.SecuredCommand;
+import com.epam.training.ticketservice.auth.SecuredCommandHandler;
 import com.epam.training.ticketservice.presentation.cli.io.InputReader;
 import com.epam.training.ticketservice.service.UserService;
-import org.jline.reader.LineReader;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,7 +14,7 @@ import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.util.StringUtils;
 
 @ShellComponent
-public class AuthCommandHandler extends SecuredCommand {
+public class AuthCommandHandler extends SecuredCommandHandler {
     private UserService userService;
 
     InputReader inputReader;
@@ -32,33 +31,7 @@ public class AuthCommandHandler extends SecuredCommand {
 
     @ShellMethod(value = "Attempts a login as admin", key = "sign in priviliged")
     @ShellMethodAvailability("isUserSignedOut")
-    public String loginPrivileged() {
-        String name;
-        boolean nameInvalid = true;
-
-        do {
-            name = inputReader.prompt("Please enter your username");
-
-            if (StringUtils.hasText(name)) {
-                nameInvalid = false;
-            } else {
-                System.out.println("Username cannot be empty");
-            }
-        } while (nameInvalid);
-
-        String password;
-        boolean passwordInvalid = true;
-
-        do {
-            password = inputReader.prompt("Please enter your password", false);
-
-            if (StringUtils.hasText(password)) {
-                passwordInvalid = false;
-            } else {
-                System.out.println("Password cannot be empty");
-            }
-        } while (passwordInvalid);
-
+    public String loginPrivileged(String name, String password) {
         Authentication req = new UsernamePasswordAuthenticationToken(name, password);
 
         try {

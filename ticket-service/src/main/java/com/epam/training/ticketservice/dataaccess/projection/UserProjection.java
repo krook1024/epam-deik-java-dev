@@ -3,14 +3,13 @@ package com.epam.training.ticketservice.dataaccess.projection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.util.UUID;
 
 @Entity
 public class UserProjection {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     private String name;
     private String password;

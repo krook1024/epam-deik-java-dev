@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.29">
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/domain/Movie.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/domain/User.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/CliUserDetailsService.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/UserService.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/MovieService.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaUserRepository.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaMovieRepository.java">
+<error line="73" severity="warning" message="&apos;lambda arguments&apos; has incorrect indentation level 24, expected level should be one of the following: 16, 20." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/UserRepository.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/MovieRepository.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/configuration/ConfirmationConfiguration.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/configuration/CliConfiguration.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/TicketServicePromptProvider.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/handler/AuthCommandHandler.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/handler/MovieCommandHandler.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/CliApplication.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/io/InputReader.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/dao/MovieDao.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/dao/UserDao.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/init/UserDatabaseInitializer.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/configuration/JpaConfiguration.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/projection/MovieProjection.java">
+<error line="3" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - javax.persistence.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/projection/UserProjection.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/auth/SpringSecurityConfig.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/auth/SecuredCommandHandler.java">
+</file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/resources/application.properties">
 </file>
 </checkstyle>
