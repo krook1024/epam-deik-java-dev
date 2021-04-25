@@ -1,39 +1,14 @@
 package com.epam.training.ticketservice.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public class Movie {
-    private String title;
-    private String genre;
-    private int length;
-
-    public Movie(String title, String genre, int length) {
-        this.title = title;
-        this.genre = genre;
-        this.length = length;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
+    private final String title;
+    private final String genre;
+    private final int length;
 
     @Override
     public String toString() {

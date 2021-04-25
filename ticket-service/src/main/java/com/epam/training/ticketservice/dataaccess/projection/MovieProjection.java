@@ -24,10 +24,4 @@ public class MovieProjection {
     private String genre;
 
     private int length;
-
-    public MovieProjection(String title, String genre, int length) {
-        this.title = title;
-        this.genre = genre;
-        this.length = length;
-    }
 }

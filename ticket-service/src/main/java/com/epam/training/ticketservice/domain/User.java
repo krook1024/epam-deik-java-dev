@@ -1,26 +1,12 @@
 package com.epam.training.ticketservice.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
+@Getter
 public class User {
-    private String name;
-    private String password;
-    private Boolean isAdmin;
-
-
-    public User(String name, String password, Boolean isAdmin) {
-        this.name = name;
-        this.password = password;
-        this.isAdmin = isAdmin;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public Boolean getAdmin() {
-        return isAdmin;
-    }
+    private final String name;
+    private final String password;
+    private final Boolean isAdmin;
 }

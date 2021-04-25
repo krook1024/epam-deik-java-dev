@@ -30,7 +30,9 @@ public class JpaUserRepository implements UserRepository {
 
         if (userProjection.isPresent()) {
             UserProjection projection = userProjection.get();
-            return new User(projection.getName(), projection.getPassword(), projection.getIsAdmin());
+            return new User(projection.getName(),
+                    projection.getPassword(),
+                    projection.getIsAdmin());
         } else {
             throw new UsernameNotFoundException("Username not found for name " + name);
         }
@@ -44,6 +46,8 @@ public class JpaUserRepository implements UserRepository {
 
     private UserProjection mapUser(User user) {
         return userDao.findByName(user.getName())
-                .orElseThrow(() -> new IllegalArgumentException("User not found for name " + user.getName()));
+                .orElseThrow(
+                        () -> new IllegalArgumentException("User not found for name " + user.getName())
+                );
     }
 }

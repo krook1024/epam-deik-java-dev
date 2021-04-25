@@ -24,10 +24,4 @@ public class UserProjection {
     private String password;
 
     private Boolean isAdmin;
-
-    public UserProjection(String name, String password, Boolean isAdmin) {
-        this.name = name;
-        this.password = password;
-        this.isAdmin = isAdmin;
-    }
 }

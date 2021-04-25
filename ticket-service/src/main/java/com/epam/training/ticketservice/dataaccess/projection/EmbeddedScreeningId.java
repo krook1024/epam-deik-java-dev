@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
@@ -20,11 +19,11 @@ import java.util.Date;
 @NoArgsConstructor
 public class EmbeddedScreeningId implements Serializable {
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "movie_id", referencedColumnName = "id")
     private MovieProjection movieProjection;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "room_id", referencedColumnName = "id")
     private RoomProjection roomProjection;
 

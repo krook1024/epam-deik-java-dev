@@ -52,7 +52,8 @@ public class AuthCommandHandler extends SecuredCommandHandler {
     @ShellMethod(value = "Shows account information when signed in", key = "describe account")
     public String describeAccount() {
         if (isUserSignedIn().isAvailable()) {
-            return "Signed in with privileged account " + SecurityContextHolder.getContext().getAuthentication().getName();
+            return "Signed in with privileged account "
+                    + SecurityContextHolder.getContext().getAuthentication().getName();
         } else {
             return "You are not signed in";
         }

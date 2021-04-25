@@ -23,7 +23,7 @@ public class UserDatabaseInitializer {
 
         if (!userProjectionOptional.isPresent()) {
             userDao.save(
-                    new UserProjection("admin", "admin", true)
+                    new UserProjection(null, "admin", "admin", true)
             );
         }
 

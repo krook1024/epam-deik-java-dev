@@ -43,7 +43,7 @@ public class JpaMovieRepository implements MovieRepository {
 
     @Override
     public void saveMovie(Movie movie) {
-        movieDao.save(new MovieProjection(movie.getTitle(), movie.getGenre(), movie.getLength()));
+        movieDao.save(new MovieProjection(null, movie.getTitle(), movie.getGenre(), movie.getLength()));
     }
 
     @Override

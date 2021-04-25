@@ -20,7 +20,7 @@ public class CliUserDetailsService implements UserDetailsService {
                 org.springframework.security.core.userdetails.User.withUsername(name);
         builder.password(user.getPassword());
 
-        if (user.getAdmin()) {
+        if (user.getIsAdmin()) {
             builder.roles("USER", "ADMIN");
         } else {
             builder.roles("USER");
