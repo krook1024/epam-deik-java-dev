@@ -1,3 +1,8 @@
+
+# Created by https://www.toptal.com/developers/gitignore/api/maven,java
+# Edit at https://www.toptal.com/developers/gitignore?templates=maven,java
+
+### Java ###
 # Compiled class file
 *.class
 
@@ -35,3 +40,5 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 .flattened-pom.xml
+
+# End of https://www.toptal.com/developers/gitignore/api/maven,java

@@ -1,7 +1,0 @@
-#surefire_0
-#Sun Apr 25 08:04:35 CEST 2021
-basedir=/home/molnara/epam-deik-java-dev/ticket-service-acceptance-tests
-idea.version=2021.1
-cucumber.filter.tags=@grade2-requirement
-user.dir=/home/molnara/epam-deik-java-dev/ticket-service-acceptance-tests
-localRepository=/home/molnara/.m2/repository
