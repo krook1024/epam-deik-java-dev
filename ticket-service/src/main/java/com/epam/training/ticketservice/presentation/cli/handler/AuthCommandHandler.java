@@ -29,7 +29,7 @@ public class AuthCommandHandler extends SecuredCommandHandler {
         this.authenticationManager = authenticationManager;
     }
 
-    @ShellMethod(value = "Attempts a login as admin", key = "sign in priviliged")
+    @ShellMethod(value = "Attempts a login as admin", key = "sign in privileged")
     @ShellMethodAvailability("isUserSignedOut")
     public String loginPrivileged(String name, String password) {
         Authentication req = new UsernamePasswordAuthenticationToken(name, password);
@@ -37,22 +37,24 @@ public class AuthCommandHandler extends SecuredCommandHandler {
         try {
             Authentication result = authenticationManager.authenticate(req);
             SecurityContextHolder.getContext().setAuthentication(result);
-            return "Logged in successfully";
+            return null;
         } catch (AuthenticationException e) {
-            return "Couldn't log you in: " + e.getMessage();
+            return "Login failed due to incorrect credentials";
         }
     }
 
     @ShellMethod(value = "Logs out", key = "sign out")
     @ShellMethodAvailability("isUserSignedIn")
-    public String logout() {
+    public void logout() {
         SecurityContextHolder.clearContext();
-        return "Logged out successsfully";
     }
 
     @ShellMethod(value = "Shows account information when signed in", key = "describe account")
-    @ShellMethodAvailability("isUserSignedIn")
     public String describeAccount() {
-        return "You are currently logged in as " + SecurityContextHolder.getContext().getAuthentication().getName();
+        if (isUserSignedIn().isAvailable()) {
+            return "Signed in with privileged account " + SecurityContextHolder.getContext().getAuthentication().getName();
+        } else {
+            return "You are not signed in";
+        }
     }
 }

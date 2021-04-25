@@ -22,17 +22,15 @@ public class MovieCommandHandler extends SecuredCommandHandler {
 
     @ShellMethod(value = "Creates a movie", key = "create movie")
     @ShellMethodAvailability("isUserSignedIn")
-    public String createMovie(String title, String genre, int length) {
+    public void createMovie(String title, String genre, int length) {
         movieService.saveMovie(title, genre, length);
-        return "Successfully created movie";
     }
 
     @ShellMethod(value = "Updates a movie", key = "update movie")
     @ShellMethodAvailability("isUserSignedIn")
-    public String updateMovie(String title, String genre, int length) {
+    public void updateMovie(String title, String genre, int length) {
         Movie movie = new Movie(title, genre, length);
         movieService.updateMovie(title, movie);
-        return "OK";
     }
 
     @ShellMethod(value = "Deletes a movie", key = "delete movie")
@@ -42,17 +40,13 @@ public class MovieCommandHandler extends SecuredCommandHandler {
     }
 
     @ShellMethod(value = "Lists movies", key = "list movies")
-    public String listMovies() {
+    public List<Movie> listMovies() {
         List<Movie> movies = movieService.findAll();
 
-        StringBuilder stringBuilder = new StringBuilder();
+        if (movies.isEmpty()) {
+            System.out.println("There are no movies at the moment");
+        }
 
-        movies.stream().forEach(
-            movie -> {
-                stringBuilder.append(movie.toString()).append("\n");
-            }
-        );
-
-        return stringBuilder.toString();
+        return movies;
     }
 }
