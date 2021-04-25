@@ -1,6 +1,5 @@
 package com.epam.training.ticketservice.service;
 
-import com.epam.training.ticketservice.dataaccess.projection.MovieProjection;
 import com.epam.training.ticketservice.domain.Movie;
 import com.epam.training.ticketservice.repository.MovieRepository;
 import org.springframework.stereotype.Service;
@@ -13,10 +12,6 @@ public class MovieService {
 
     public MovieService(MovieRepository movieRepository) {
         this.movieRepository = movieRepository;
-    }
-
-    public Movie findByName(String name) {
-        return movieRepository.findByTitle(name);
     }
 
     public List<Movie> findAll() {

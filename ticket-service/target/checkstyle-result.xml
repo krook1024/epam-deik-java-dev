@@ -6,6 +6,9 @@
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/CliUserDetailsService.java">
 </file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/MovieServiceTest.java">
+<error line="3" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - org.junit.jupiter.api.Assertions.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+</file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/UserService.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/MovieService.java">
@@ -13,7 +16,6 @@
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaUserRepository.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaMovieRepository.java">
-<error line="73" severity="warning" message="&apos;lambda arguments&apos; has incorrect indentation level 24, expected level should be one of the following: 16, 20." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/UserRepository.java">
 </file>
@@ -26,6 +28,7 @@
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/TicketServicePromptProvider.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/handler/AuthCommandHandler.java">
+<error line="55" severity="warning" message="Line is longer than 120 characters (found 123)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/handler/MovieCommandHandler.java">
 </file>
