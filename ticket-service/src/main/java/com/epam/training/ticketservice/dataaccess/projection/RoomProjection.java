@@ -12,11 +12,13 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class RoomProjection {
     @Id
     @GeneratedValue
     private Long id;
 
+    @Column(unique = true)
     String name;
 
     @Column(name = "rowcount")

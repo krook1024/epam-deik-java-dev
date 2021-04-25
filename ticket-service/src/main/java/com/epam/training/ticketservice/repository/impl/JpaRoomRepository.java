@@ -62,8 +62,8 @@ public class JpaRoomRepository implements RoomRepository {
 
     @Override
     @Transactional
-    public void delete(Room room) {
-        roomDao.delete(mapRoom(room));
+    public void delete(String name) {
+        roomDao.deleteByName(name);
     }
 
     private List<RoomProjection> mapRooms(List<Room> rooms) {

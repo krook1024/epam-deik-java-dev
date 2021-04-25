@@ -1,15 +1,20 @@
 package com.epam.training.ticketservice.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 import java.util.Date;
 
-@Data
+@Getter
 @AllArgsConstructor
 public class Screening {
-    private Movie movie;
-    private Room room;
-    private Date start;
+
+    private final Movie movie;
+    private final Room room;
+    private final Date startTime;
+
+    @Override
+    public String toString() {
+        return movie + ", screened in room " + room.getName() + ", at " + startTime;
+    }
 }

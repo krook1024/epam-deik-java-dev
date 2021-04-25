@@ -2,6 +2,7 @@ package com.epam.training.ticketservice.repository;
 
 import com.epam.training.ticketservice.domain.Movie;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface MovieRepository {
@@ -12,7 +13,7 @@ public interface MovieRepository {
 
     void update(String title, Movie movie);
 
-    void delete(Movie movie);
-
     List<Movie> findAll();
+
+    void delete(String title);
 }

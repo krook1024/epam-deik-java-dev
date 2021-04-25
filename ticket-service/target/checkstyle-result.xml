@@ -4,20 +4,33 @@
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/domain/User.java">
 </file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/domain/Screening.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/domain/Room.java">
+</file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/CliUserDetailsService.java">
 </file>
-<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/MovieServiceTest.java">
-<error line="3" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - org.junit.jupiter.api.Assertions.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/ScreeningService.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/UserService.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/MovieService.java">
 </file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/service/RoomService.java">
+</file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaUserRepository.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaRoomRepository.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaMovieRepository.java">
 </file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/impl/JpaScreeningRepository.java">
+</file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/UserRepository.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/ScreeningRepository.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/RoomRepository.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/repository/MovieRepository.java">
 </file>
@@ -30,7 +43,11 @@
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/handler/AuthCommandHandler.java">
 <error line="55" severity="warning" message="Line is longer than 120 characters (found 123)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
 </file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/handler/RoomCommandHandler.java">
+</file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/handler/MovieCommandHandler.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/ApplicationConfig.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/presentation/cli/CliApplication.java">
 </file>
@@ -40,12 +57,21 @@
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/dao/UserDao.java">
 </file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/dao/ScreeningDao.java">
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/dao/RoomDao.java">
+</file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/init/UserDatabaseInitializer.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/configuration/JpaConfiguration.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/projection/MovieProjection.java">
-<error line="3" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - javax.persistence.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="7" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - javax.persistence.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/projection/ScreeningProjection.java">
+<error line="8" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - javax.persistence.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+</file>
+<file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/projection/RoomProjection.java">
 </file>
 <file name="/home/molnara/epam-deik-java-dev/ticket-service/src/main/java/com/epam/training/ticketservice/dataaccess/projection/UserProjection.java">
 </file>

@@ -23,8 +23,7 @@ public class MovieService {
     }
 
     public void deleteMovie(String title) {
-        Movie movie = movieRepository.findByTitle(title);
-        movieRepository.delete(movie);
+        movieRepository.delete(title);
     }
 
     public void saveMovie(String title, String genre, int length) {

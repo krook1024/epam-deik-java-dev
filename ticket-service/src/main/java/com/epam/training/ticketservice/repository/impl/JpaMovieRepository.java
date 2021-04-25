@@ -49,9 +49,8 @@ public class JpaMovieRepository implements MovieRepository {
     @Override
     @Transactional
     public void update(String title, Movie movie) {
-        MovieProjection movieProjection = movieDao.findByTitle(movie.getTitle()).get();
+        MovieProjection movieProjection = movieDao.findByTitle(title).get();
 
-        movieProjection.setTitle(movie.getTitle());
         movieProjection.setGenre(movie.getGenre());
         movieProjection.setLength(movie.getLength());
 
@@ -60,8 +59,8 @@ public class JpaMovieRepository implements MovieRepository {
 
     @Override
     @Transactional
-    public void delete(Movie movie) {
-        movieDao.delete(mapMovie(movie));
+    public void delete(String title) {
+        movieDao.deleteByTitle(title);
     }
 
     private List<MovieProjection> mapMovies(List<Movie> movies) {

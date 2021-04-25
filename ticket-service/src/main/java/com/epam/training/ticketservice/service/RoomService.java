@@ -23,8 +23,7 @@ public class RoomService {
     }
 
     public void deleteRoom(String name) {
-        Room room = roomRepository.findByName(name);
-        roomRepository.delete(room);
+        roomRepository.delete(name);
     }
 
     public void saveRoom(String name, int rows, int cols) {

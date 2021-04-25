@@ -15,5 +15,5 @@ public interface RoomRepository {
 
     void update(String name, Room room);
 
-    void delete(Room room);
+    void delete(String name);
 }

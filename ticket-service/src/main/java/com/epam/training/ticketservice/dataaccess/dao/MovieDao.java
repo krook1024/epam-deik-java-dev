@@ -9,5 +9,7 @@ import java.util.Optional;
 public interface MovieDao extends JpaRepository<MovieProjection, Long> {
     Optional<MovieProjection> findByTitle(String title);
 
+    void deleteByTitle(String title);
+
     List<MovieProjection> findAll();
 }
