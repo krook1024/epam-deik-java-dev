@@ -42,8 +42,4 @@ public class ScreeningService {
         Screening screening = new Screening(movie, room, startTime);
         screeningRepository.deleteScreening(screening);
     }
-
-    public List<Screening> findAll() {
-        return screeningRepository.findAll();
-    }
 }

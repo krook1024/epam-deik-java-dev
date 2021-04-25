@@ -14,18 +14,6 @@ public class MovieService {
         this.movieRepository = movieRepository;
     }
 
-    public List<Movie> findAll() {
-        return movieRepository.findAll();
-    }
-
-    public void updateMovie(String title, Movie movie) {
-        movieRepository.update(title, movie);
-    }
-
-    public void deleteMovie(String title) {
-        movieRepository.delete(title);
-    }
-
     public void saveMovie(String title, String genre, int length) {
         movieRepository.saveMovie(new Movie(title, genre, length));
     }

@@ -2,6 +2,7 @@ package com.epam.training.ticketservice.presentation.cli.handler;
 
 import com.epam.training.ticketservice.auth.SecuredCommandHandler;
 import com.epam.training.ticketservice.domain.Screening;
+import com.epam.training.ticketservice.repository.ScreeningRepository;
 import com.epam.training.ticketservice.service.ScreeningService;
 import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
@@ -17,8 +18,11 @@ public class ScreeningCommandHandler extends SecuredCommandHandler {
 
     ScreeningService screeningService;
 
-    public ScreeningCommandHandler(ScreeningService screeningService) {
+    ScreeningRepository screeningRepository;
+
+    public ScreeningCommandHandler(ScreeningService screeningService, ScreeningRepository screeningRepository) {
         this.screeningService = screeningService;
+        this.screeningRepository = screeningRepository;
     }
 
     @ShellMethod(key = "create screening", value = "Creates a screening")
@@ -39,6 +43,6 @@ public class ScreeningCommandHandler extends SecuredCommandHandler {
 
     @ShellMethod(key = "list screenings", value = "Lists screenings")
     public List<Screening> listScreenings() {
-        return screeningService.findAll();
+        return screeningRepository.findAll();
     }
 }
