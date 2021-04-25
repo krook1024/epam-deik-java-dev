@@ -1,10 +1,17 @@
 package com.epam.training.ticketservice.dataaccess.projection;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserProjection {
 
     @Id
@@ -20,20 +27,5 @@ public class UserProjection {
         this.name = name;
         this.password = password;
         this.isAdmin = isAdmin;
-    }
-
-    protected UserProjection() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public Boolean getIsAdmin() {
-        return isAdmin;
     }
 }
