@@ -20,11 +20,6 @@ public class JpaUserRepository implements UserRepository {
     }
 
     @Override
-    public void saveUser(User user) {
-        userDao.save(mapUser(user));
-    }
-
-    @Override
     public User findByName(String name) throws UsernameNotFoundException {
         Optional<UserProjection> userProjection = userDao.findByName(name);
 

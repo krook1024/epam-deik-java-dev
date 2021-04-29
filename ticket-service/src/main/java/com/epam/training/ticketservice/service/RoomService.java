@@ -14,16 +14,8 @@ public class RoomService {
         this.roomRepository = roomRepository;
     }
 
-    public List<Room> findAll() {
-        return roomRepository.findAll();
-    }
-
     public void updateRoom(String name, Room room) {
         roomRepository.update(name, room);
-    }
-
-    public void deleteRoom(String name) {
-        roomRepository.delete(name);
     }
 
     public void saveRoom(String name, int rows, int cols) {

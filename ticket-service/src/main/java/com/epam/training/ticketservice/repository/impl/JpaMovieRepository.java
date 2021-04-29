@@ -19,6 +19,7 @@ public class JpaMovieRepository implements MovieRepository {
         this.movieDao = movieDao;
     }
 
+    @Override
     public List<Movie> findAll() {
         return movieDao.findAll()
                 .stream()
