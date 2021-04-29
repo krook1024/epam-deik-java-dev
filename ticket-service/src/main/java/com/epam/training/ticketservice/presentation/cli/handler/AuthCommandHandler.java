@@ -1,8 +1,6 @@
 package com.epam.training.ticketservice.presentation.cli.handler;
 
 import com.epam.training.ticketservice.auth.SecuredCommandHandler;
-import com.epam.training.ticketservice.presentation.cli.io.InputReader;
-import com.epam.training.ticketservice.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -14,17 +12,9 @@ import org.springframework.shell.standard.ShellMethodAvailability;
 
 @ShellComponent
 public class AuthCommandHandler extends SecuredCommandHandler {
-    private UserService userService;
-
-    InputReader inputReader;
-
     AuthenticationManager authenticationManager;
 
-    public AuthCommandHandler(UserService userService,
-                              InputReader inputReader,
-                              AuthenticationManager authenticationManager) {
-        this.userService = userService;
-        this.inputReader = inputReader;
+    public AuthCommandHandler(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
 

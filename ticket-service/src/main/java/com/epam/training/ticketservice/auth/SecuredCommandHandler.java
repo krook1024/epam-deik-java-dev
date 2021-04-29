@@ -15,14 +15,4 @@ public abstract class SecuredCommandHandler {
 
         return Availability.available();
     }
-
-    public Availability isUserSignedOut() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (!(authentication instanceof UsernamePasswordAuthenticationToken)) {
-            return Availability.available();
-        }
-
-        return Availability.unavailable("you are signed in. Please sign out to use this command");
-    }
 }

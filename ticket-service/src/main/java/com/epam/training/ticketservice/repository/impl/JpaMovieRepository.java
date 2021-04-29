@@ -37,9 +37,7 @@ public class JpaMovieRepository implements MovieRepository {
     public Movie findByTitle(String title) {
         MovieProjection movieProjection = movieDao.findByTitle(title).get();
 
-        return new Movie(movieProjection.getTitle(),
-                movieProjection.getGenre(),
-                movieProjection.getLength());
+        return mapToMovie(movieProjection);
     }
 
     @Override
@@ -64,8 +62,7 @@ public class JpaMovieRepository implements MovieRepository {
         movieDao.deleteByTitle(title);
     }
 
-    private MovieProjection mapMovie(Movie movie) {
-        return movieDao.findByTitle(movie.getTitle())
-                .orElseThrow(() -> new IllegalArgumentException("Movie not found for title " + movie.getTitle()));
+    private Movie mapToMovie(MovieProjection movieProjection) {
+        return new Movie(movieProjection.getTitle(), movieProjection.getGenre(), movieProjection.getLength());
     }
 }

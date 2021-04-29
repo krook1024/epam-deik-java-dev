@@ -83,13 +83,13 @@ public class JpaScreeningRepository implements ScreeningRepository {
         MovieProjection movieProjection = null;
         RoomProjection roomProjection = null;
 
-        if (!movieProjectionOptional.isPresent()) {
+        if (movieProjectionOptional.isEmpty()) {
             throw new IllegalArgumentException("No movie can be found for name " + screening.getMovie().getTitle());
         } else {
             movieProjection = movieProjectionOptional.get();
         }
 
-        if (!roomProjectionOptional.isPresent()) {
+        if (roomProjectionOptional.isEmpty()) {
             throw new IllegalArgumentException("No room can be found for name " + screening.getMovie().getTitle());
         } else {
             roomProjection = roomProjectionOptional.get();
