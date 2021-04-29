@@ -9,8 +9,8 @@ import java.util.Date;
 
 @Component
 public class DateConverterComponent implements Converter<String, Date> {
-    protected static final String DATE_FORMAT = "yyyy-mm-dd HH:MM";
 
+    protected static final String DATE_FORMAT = "YYYY-MM-DD hh:mm";
 
     @Override
     public Date convert(String source) {

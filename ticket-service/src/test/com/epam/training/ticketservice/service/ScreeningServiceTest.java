@@ -6,7 +6,6 @@ import com.epam.training.ticketservice.domain.Screening;
 import com.epam.training.ticketservice.repository.MovieRepository;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import com.epam.training.ticketservice.repository.ScreeningRepository;
-import com.epam.training.ticketservice.service.ScreeningService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -50,7 +49,7 @@ class ScreeningServiceTest {
         given(roomRepository.findByName("Room")).willReturn(room);
 
         Screening screening = new Screening(movie, room, date);
-        given(screeningRepository.findAll()).willReturn(List.of(screening));
+        given(screeningRepository.findAll()).willReturn(List.of());
 
 
         // When
