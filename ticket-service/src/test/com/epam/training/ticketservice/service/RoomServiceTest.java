@@ -24,7 +24,7 @@ class RoomServiceTest {
     }
 
     @Test
-    void testSaveRoom() {
+    void testSaveRoomCallsRepositoryCorrectly() {
         // Given
         Room room = new Room("test", 42, 42);
 

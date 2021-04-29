@@ -64,12 +64,6 @@ public class JpaMovieRepository implements MovieRepository {
         movieDao.deleteByTitle(title);
     }
 
-    private List<MovieProjection> mapMovies(List<Movie> movies) {
-        return movies.stream()
-                .map(this::mapMovie)
-                .collect(Collectors.toList());
-    }
-
     private MovieProjection mapMovie(Movie movie) {
         return movieDao.findByTitle(movie.getTitle())
                 .orElseThrow(() -> new IllegalArgumentException("Movie not found for title " + movie.getTitle()));

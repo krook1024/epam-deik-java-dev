@@ -7,7 +7,6 @@ import com.epam.training.ticketservice.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
@@ -15,8 +14,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 
 class JpaUserRepositoryTest {
 
@@ -37,8 +34,21 @@ class JpaUserRepositoryTest {
         given(userDao.findByName("test")).willReturn(Optional.empty());
 
         // When, Then
-        assertThrows(UsernameNotFoundException.class, () -> {
-            underTest.findByName("test");
-        });
+        assertThrows(UsernameNotFoundException.class, () -> underTest.findByName("test"));
+    }
+
+    @Test
+    void testFindByNameReturnsCorrectUserIfUserIsFound() {
+        // Then
+        UserProjection userProjection = new UserProjection(null, "test", "test", false);
+        given(userDao.findByName("test")).willReturn(Optional.of(userProjection));
+
+        // When
+        User found = underTest.findByName("test");
+
+        // Then
+        assertEquals(userProjection.getName(), found.getName());
+        assertEquals(userProjection.getPassword(), found.getPassword());
+        assertEquals(userProjection.getIsAdmin(), found.getIsAdmin());
     }
 }

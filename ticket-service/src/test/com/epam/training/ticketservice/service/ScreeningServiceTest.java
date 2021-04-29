@@ -1,3 +1,5 @@
+package com.epam.training.ticketservice.service;
+
 import com.epam.training.ticketservice.domain.Movie;
 import com.epam.training.ticketservice.domain.Room;
 import com.epam.training.ticketservice.domain.Screening;

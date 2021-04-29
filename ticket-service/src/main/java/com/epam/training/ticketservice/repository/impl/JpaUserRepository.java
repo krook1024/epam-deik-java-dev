@@ -7,9 +7,7 @@ import com.epam.training.ticketservice.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Repository
 public class JpaUserRepository implements UserRepository {
@@ -31,16 +29,5 @@ public class JpaUserRepository implements UserRepository {
         } else {
             throw new UsernameNotFoundException("Username not found for name " + name);
         }
-    }
-
-    private List<UserProjection> mapUsers(List<User> users) {
-        return users.stream()
-                .map(this::mapUser)
-                .collect(Collectors.toList());
-    }
-
-    private UserProjection mapUser(User user) {
-        return userDao.findByName(user.getName())
-                .orElseThrow(() -> new IllegalArgumentException("User not found for name " + user.getName()));
     }
 }

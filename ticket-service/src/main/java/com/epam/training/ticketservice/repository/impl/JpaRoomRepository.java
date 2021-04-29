@@ -66,12 +66,6 @@ public class JpaRoomRepository implements RoomRepository {
         roomDao.deleteByName(name);
     }
 
-    private List<RoomProjection> mapRooms(List<Room> rooms) {
-        return rooms.stream()
-                .map(this::mapRoom)
-                .collect(Collectors.toList());
-    }
-
     private RoomProjection mapRoom(Room room) {
         return roomDao.findByName(room.getName())
                 .orElseThrow(() -> new IllegalArgumentException("Room not found for name " + room.getName()));

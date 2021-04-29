@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -25,7 +24,7 @@ class MovieServiceTest {
     }
 
     @Test
-    void testSaveMovie() {
+    void testSaveMovieCallsRepositoryCorrectly() {
         // Given
         Movie movie = new Movie("test", "test", 90);
 

@@ -10,7 +10,7 @@ class TicketServicePromptProviderTest {
     TicketServicePromptProvider underTest;
 
     @Test
-    void getPrompt() {
+    void testGetPromptReturnsCorrectAttributedString() {
         // Given
         underTest = new TicketServicePromptProvider();
 

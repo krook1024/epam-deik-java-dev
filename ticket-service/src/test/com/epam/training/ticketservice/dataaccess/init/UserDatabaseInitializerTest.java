@@ -9,7 +9,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -28,7 +27,7 @@ class UserDatabaseInitializerTest {
     }
 
     @Test
-    void initDatabaseWhenAdminIsPresent() {
+    void testInitDatabaseWhenAdminIsPresent() {
         // Given
         UserProjection userProjection = new UserProjection(null, "hello", "hello", true);
         given(userDao.findByName("admin")).willReturn(Optional.of(userProjection));
@@ -41,7 +40,7 @@ class UserDatabaseInitializerTest {
     }
 
     @Test
-    void initDatabaseWhenAdminIsNotPresent() {
+    void testInitDatabaseWhenAdminIsNotPresent() {
         // Given
         UserProjection userProjection = new UserProjection(null, "admin", "admin", true);
         given(userDao.findByName("admin")).willReturn(Optional.empty());
