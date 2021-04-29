@@ -47,7 +47,7 @@ public class ScreeningService {
         screeningRepository.deleteScreening(screening);
     }
 
-    private void checkScreeningOverlap(String roomName, Date desiredStarTime, int length) throws IllegalArgumentException {
+    private void checkScreeningOverlap(String roomName, Date desiredStartTime, int length) throws IllegalArgumentException {
         List<Screening> screenings = screeningRepository.findAll();
 
         screenings.forEach(screening -> {
@@ -56,13 +56,13 @@ public class ScreeningService {
                 Date screeningEnd = DateUtils.addMinutes(screeningStartTime, screening.getMovie().getLength());
                 Date screeningBreakPeriodEnd = DateUtils.addMinutes(screeningEnd, 10);
 
-                Date desiredEndTime = DateUtils.addMinutes(desiredStarTime, length);
+                Date desiredEndTime = DateUtils.addMinutes(desiredStartTime, length);
 
-                if (isOverlapping(screeningStartTime, screeningEnd, desiredStarTime, desiredEndTime)) {
+                if (isOverlapping(screeningStartTime, screeningEnd, desiredStartTime, desiredEndTime)) {
                     throw new IllegalArgumentException("There is an overlapping screening");
                 }
 
-                if (isOverlapping(screeningStartTime, screeningBreakPeriodEnd, desiredStarTime, desiredEndTime)) {
+                if (isOverlapping(screeningStartTime, screeningBreakPeriodEnd, desiredStartTime, desiredEndTime)) {
                     throw new IllegalArgumentException(
                             "This would start in the break period after another screening in this room"
                     );
