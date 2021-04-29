@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.Optional;
 
-
 @Component
 public class UserDatabaseInitializer {
 
@@ -21,7 +20,7 @@ public class UserDatabaseInitializer {
     public void initDatabase() {
         Optional<UserProjection> userProjectionOptional = userDao.findByName("admin");
 
-        if (!userProjectionOptional.isPresent()) {
+        if (userProjectionOptional.isEmpty()) {
             userDao.save(
                     new UserProjection(null, "admin", "admin", true)
             );
