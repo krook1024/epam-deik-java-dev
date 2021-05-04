@@ -57,4 +57,13 @@ class UserServiceTest {
         assertEquals(userDetails.getPassword(), "test");
         assertEquals(userDetails.getUsername(), "test");
     }
+
+    @Test
+    void testCreateUserCallsRepositoryCorrectly() {
+        // When
+        underTest.createUser("user", "user");
+
+        // Then
+        verify(userRepository).save(new User("user", "user", false));
+    }
 }

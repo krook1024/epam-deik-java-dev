@@ -30,4 +30,14 @@ public class JpaUserRepository implements UserRepository {
             throw new UsernameNotFoundException("Username not found for name " + name);
         }
     }
+
+    @Override
+    public void save(User user) {
+        userDao.save(new UserProjection(
+                null,
+                user.getName(),
+                user.getPassword(),
+                user.getIsAdmin()
+        ));
+    }
 }

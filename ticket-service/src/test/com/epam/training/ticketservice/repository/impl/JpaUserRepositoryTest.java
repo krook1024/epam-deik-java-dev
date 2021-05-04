@@ -14,6 +14,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 
 class JpaUserRepositoryTest {
 
@@ -39,7 +40,7 @@ class JpaUserRepositoryTest {
 
     @Test
     void testFindByNameReturnsCorrectUserIfUserIsFound() {
-        // Then
+        // Given
         UserProjection userProjection = new UserProjection(null, "test", "test", false);
         given(userDao.findByName("test")).willReturn(Optional.of(userProjection));
 
@@ -50,5 +51,14 @@ class JpaUserRepositoryTest {
         assertEquals(userProjection.getName(), found.getName());
         assertEquals(userProjection.getPassword(), found.getPassword());
         assertEquals(userProjection.getIsAdmin(), found.getIsAdmin());
+    }
+
+    @Test
+    void testSaveCallsDaoWithTheRightParameters() {
+        // When
+        underTest.save(new User("user", "user", false));
+
+        // Then
+        verify(userDao).save(new UserProjection(null, "user", "user", false));
     }
 }

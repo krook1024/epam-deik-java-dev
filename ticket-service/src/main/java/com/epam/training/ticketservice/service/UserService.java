@@ -1,5 +1,6 @@
 package com.epam.training.ticketservice.service;
 
+import com.epam.training.ticketservice.dataaccess.projection.UserProjection;
 import com.epam.training.ticketservice.domain.User;
 import com.epam.training.ticketservice.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,5 +31,12 @@ public class UserService implements UserDetailsService {
         }
 
         return builder.build();
+    }
+
+    public void createUser(String name, String password) {
+        Boolean isAdminDefault = false;
+
+        User user = new User(name, password, isAdminDefault);
+        userRepository.save(user);
     }
 }
