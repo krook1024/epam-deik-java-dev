@@ -1,0 +1,10 @@
+ticket-service:
+    base-ticket-price: 1500
+spring:
+    jpa:
+        hibernate:
+            ddl-auto: update
+    datasource:
+        url: jdbc:mysql://localhost:3306/ticketservice
+        username: root
+        password: asdQWE123
