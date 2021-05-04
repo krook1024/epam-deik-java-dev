@@ -35,7 +35,9 @@ public class JpaMovieRepository implements MovieRepository {
 
     @Override
     public Movie findByTitle(String title) {
-        MovieProjection movieProjection = movieDao.findByTitle(title).get();
+        MovieProjection movieProjection = movieDao.findByTitle(title).orElseThrow(
+                () -> new IllegalArgumentException("No movie can be found with the title " + title)
+        );
 
         return mapToMovie(movieProjection);
     }
@@ -48,7 +50,9 @@ public class JpaMovieRepository implements MovieRepository {
     @Override
     @Transactional
     public void update(String title, Movie movie) {
-        MovieProjection movieProjection = movieDao.findByTitle(title).get();
+        MovieProjection movieProjection = movieDao.findByTitle(title).orElseThrow(
+                () -> new IllegalArgumentException("No movie can be found with the title " + title)
+        );
 
         movieProjection.setGenre(movie.getGenre());
         movieProjection.setLength(movie.getLength());

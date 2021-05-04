@@ -7,8 +7,6 @@ import com.epam.training.ticketservice.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 public class JpaUserRepository implements UserRepository {
     private final UserDao userDao;
@@ -19,16 +17,13 @@ public class JpaUserRepository implements UserRepository {
 
     @Override
     public User findByName(String name) throws UsernameNotFoundException {
-        Optional<UserProjection> userProjection = userDao.findByName(name);
+        UserProjection userProjection = userDao.findByName(name).orElseThrow(
+                () -> new UsernameNotFoundException("Username not found for name " + name)
+        );
 
-        if (userProjection.isPresent()) {
-            UserProjection projection = userProjection.get();
-            return new User(projection.getName(),
-                    projection.getPassword(),
-                    projection.getIsAdmin());
-        } else {
-            throw new UsernameNotFoundException("Username not found for name " + name);
-        }
+        return new User(userProjection.getName(),
+                userProjection.getPassword(),
+                userProjection.getIsAdmin());
     }
 
     @Override

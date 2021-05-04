@@ -35,7 +35,9 @@ public class JpaRoomRepository implements RoomRepository {
 
     @Override
     public Room findByName(String name) {
-        RoomProjection roomProjection = roomDao.findByName(name).get();
+        RoomProjection roomProjection = roomDao.findByName(name).orElseThrow(
+                () -> new IllegalArgumentException("No room can be found with this name")
+        );
 
         return new Room(
                 roomProjection.getName(),
@@ -52,7 +54,9 @@ public class JpaRoomRepository implements RoomRepository {
     @Override
     @Transactional
     public void update(String name, Room room) {
-        RoomProjection roomProjection = roomDao.findByName(name).get();
+        RoomProjection roomProjection = roomDao.findByName(name).orElseThrow(
+                () -> new IllegalArgumentException("No room can be found with this name")
+        );
 
         roomProjection.setRows(room.getRows());
         roomProjection.setCols(room.getCols());

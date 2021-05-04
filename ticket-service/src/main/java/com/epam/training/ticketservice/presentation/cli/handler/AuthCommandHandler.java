@@ -58,12 +58,12 @@ public class AuthCommandHandler extends SecuredCommandHandler {
             Collection<? extends GrantedAuthority> roles = authentication.getAuthorities();
 
             if (roles.contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
-                return "Signed in with privileged account "
-                        + SecurityContextHolder.getContext().getAuthentication().getName();
+                return "Signed in with privileged account '"
+                        + SecurityContextHolder.getContext().getAuthentication().getName() + "'";
             }
 
-            return "Signed in with account "
-                    + SecurityContextHolder.getContext().getAuthentication().getName();
+            return "Signed in with account '"
+                    + SecurityContextHolder.getContext().getAuthentication().getName() + "'";
         }
 
         return "You are not signed in";

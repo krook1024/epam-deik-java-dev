@@ -16,7 +16,6 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -62,6 +61,18 @@ public class JpaScreeningRepository implements ScreeningRepository {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public Screening findByMovieTitleAndRoomNameAndStartTime(String movieTitle, String roomName, Date startTime) {
+        ScreeningProjection screeningProjection = screeningDao
+                .findById_MovieProjection_TitleAndId_RoomProjection_NameAndId_StartTime(
+                        movieTitle,
+                        roomName,
+                        startTime
+                ).orElseThrow(() -> new IllegalArgumentException("This is not a valid screening"));
+
+        return mapToScreening(screeningProjection);
+    }
+
     protected Screening mapToScreening(ScreeningProjection screeningProjection) {
         MovieProjection movieProjection = screeningProjection.getId().getMovieProjection();
         RoomProjection roomProjection = screeningProjection.getId().getRoomProjection();
@@ -78,22 +89,13 @@ public class JpaScreeningRepository implements ScreeningRepository {
     }
 
     protected ScreeningProjection mapToScreeningProjection(Screening screening) throws IllegalArgumentException {
-        Optional<MovieProjection> movieProjectionOptional = movieDao.findByTitle(screening.getMovie().getTitle());
-        Optional<RoomProjection> roomProjectionOptional = roomDao.findByName(screening.getRoom().getName());
-        MovieProjection movieProjection = null;
-        RoomProjection roomProjection = null;
+        MovieProjection movieProjection = movieDao.findByTitle(screening.getMovie().getTitle()).orElseThrow(
+                () -> new IllegalArgumentException("No movie can be found for name " + screening.getMovie().getTitle())
+        );
 
-        if (movieProjectionOptional.isEmpty()) {
-            throw new IllegalArgumentException("No movie can be found for name " + screening.getMovie().getTitle());
-        } else {
-            movieProjection = movieProjectionOptional.get();
-        }
-
-        if (roomProjectionOptional.isEmpty()) {
-            throw new IllegalArgumentException("No room can be found for name " + screening.getMovie().getTitle());
-        } else {
-            roomProjection = roomProjectionOptional.get();
-        }
+        RoomProjection roomProjection = roomDao.findByName(screening.getRoom().getName()).orElseThrow(
+                () -> new IllegalArgumentException("No room can be found for name " + screening.getMovie().getTitle())
+        );
 
         EmbeddedScreeningId embeddedScreeningId = new EmbeddedScreeningId(movieProjection,
                 roomProjection,

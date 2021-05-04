@@ -15,6 +15,7 @@ import java.util.List;
 @Service
 public class ScreeningService {
 
+    public static final int BREAK_PERIOD_LENGTH = 10;
     private final ScreeningRepository screeningRepository;
     private final MovieRepository movieRepository;
     private final RoomRepository roomRepository;
@@ -54,7 +55,7 @@ public class ScreeningService {
             if (screening.getRoom().getName().equals(roomName)) {
                 Date screeningStartTime = screening.getStartTime();
                 Date screeningEnd = DateUtils.addMinutes(screeningStartTime, screening.getMovie().getLength());
-                Date screeningBreakPeriodEnd = DateUtils.addMinutes(screeningEnd, 10);
+                Date screeningBreakPeriodEnd = DateUtils.addMinutes(screeningEnd, BREAK_PERIOD_LENGTH);
 
                 Date desiredEndTime = DateUtils.addMinutes(desiredStartTime, length);
 
