@@ -9,4 +9,9 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class Seat {
     private final int row, col;
+
+    @Override
+    public String toString() {
+        return "(" + row + "," + col + ")";
+    }
 }

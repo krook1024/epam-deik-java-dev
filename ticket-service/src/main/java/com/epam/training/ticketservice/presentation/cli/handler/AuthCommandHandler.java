@@ -1,6 +1,8 @@
 package com.epam.training.ticketservice.presentation.cli.handler;
 
 import com.epam.training.ticketservice.auth.SecuredCommandHandler;
+import com.epam.training.ticketservice.domain.Booking;
+import com.epam.training.ticketservice.repository.BookingRepository;
 import com.epam.training.ticketservice.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,16 +17,21 @@ import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 
 import java.util.Collection;
+import java.util.List;
 
 @ShellComponent
 @ShellCommandGroup("Authentication Commands")
 public class AuthCommandHandler extends SecuredCommandHandler {
     AuthenticationManager authenticationManager;
     UserService userService;
+    BookingRepository bookingRepository;
 
-    public AuthCommandHandler(AuthenticationManager authenticationManager, UserService userService) {
+    public AuthCommandHandler(AuthenticationManager authenticationManager,
+                              UserService userService,
+                              BookingRepository bookingRepository) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
+        this.bookingRepository = bookingRepository;
     }
 
     @ShellMethod(value = "Signs up as a regular user", key = "sign up")
@@ -57,13 +64,26 @@ public class AuthCommandHandler extends SecuredCommandHandler {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             Collection<? extends GrantedAuthority> roles = authentication.getAuthorities();
 
+            String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+
             if (roles.contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
-                return "Signed in with privileged account '"
-                        + SecurityContextHolder.getContext().getAuthentication().getName() + "'";
+                return "Signed in with privileged account '" + userName + "'";
             }
 
-            return "Signed in with account '"
-                    + SecurityContextHolder.getContext().getAuthentication().getName() + "'";
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.append("Signed in with account '" + userName + "'\n");
+
+            List<Booking> bookings = bookingRepository.findByUserName(userName);
+
+            if (!bookings.isEmpty()) {
+                stringBuilder.append("Your previous bookings are\n");
+                bookings.forEach(booking -> stringBuilder.append(booking + "\n"));
+            } else {
+                stringBuilder.append("You have not booked any tickets yet");
+            }
+
+            return stringBuilder.toString();
         }
 
         return "You are not signed in";

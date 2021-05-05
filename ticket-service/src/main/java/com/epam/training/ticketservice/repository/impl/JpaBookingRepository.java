@@ -3,11 +3,8 @@ package com.epam.training.ticketservice.repository.impl;
 import com.epam.training.ticketservice.dataaccess.dao.BookingDao;
 import com.epam.training.ticketservice.dataaccess.dao.ScreeningDao;
 import com.epam.training.ticketservice.dataaccess.dao.UserDao;
-import com.epam.training.ticketservice.dataaccess.projection.BookingProjection;
-import com.epam.training.ticketservice.dataaccess.projection.SeatProjection;
-import com.epam.training.ticketservice.domain.Booking;
-import com.epam.training.ticketservice.domain.Screening;
-import com.epam.training.ticketservice.domain.Seat;
+import com.epam.training.ticketservice.dataaccess.projection.*;
+import com.epam.training.ticketservice.domain.*;
 import com.epam.training.ticketservice.repository.BookingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -35,8 +32,60 @@ public class JpaBookingRepository implements BookingRepository {
     }
 
     @Override
-    public List<Booking> findByUsername(String name) {
-        return null;
+    public List<Booking> findAllByScreening(Screening screening) {
+        return mapToBookings(bookingDao.findAllByScreeningProjection(
+                screeningDao.findById_MovieProjection_TitleAndId_RoomProjection_NameAndId_StartTime(
+                        screening.getMovie().getTitle(),
+                        screening.getRoom().getName(),
+                        screening.getStartTime()
+                ).orElseThrow(() -> new IllegalArgumentException("Screening cannot be found"))
+        ));
+    }
+
+    private List<Booking> mapToBookings(List<BookingProjection> bookingProjections) {
+        return bookingProjections.stream().map(this::mapToBooking).collect(Collectors.toList());
+    }
+
+    private Booking mapToBooking(BookingProjection bookingProjection) {
+        Booking.BookingBuilder builder = Booking.builder();
+
+        EmbeddedScreeningId embeddedScreeningId = bookingProjection.getScreeningProjection().getId();
+        MovieProjection movieProjection = embeddedScreeningId.getMovieProjection();
+        RoomProjection roomProjection = embeddedScreeningId.getRoomProjection();
+
+        builder.screening(
+                new Screening(
+                        new Movie(
+                                movieProjection.getTitle(),
+                                movieProjection.getGenre(),
+                                movieProjection.getLength()
+                        ),
+                        new Room(
+                                roomProjection.getName(),
+                                roomProjection.getRows(),
+                                roomProjection.getCols()
+                        ),
+                        embeddedScreeningId.getStartTime()
+                )
+        );
+
+        builder.seats(
+                bookingProjection.getSeats().stream().map(
+                        seatProjection -> new Seat(seatProjection.getRowNum(), seatProjection.getColNum())
+                ).collect(Collectors.toList())
+        );
+
+        UserProjection userProjection = bookingProjection.getUserProjection();
+
+        builder.user(
+                new User(
+                        userProjection.getName(),
+                        userProjection.getPassword(),
+                        userProjection.getIsAdmin()
+                )
+        );
+
+        return builder.build();
     }
 
     private BookingProjection mapToBookingProjection(Booking booking) {
@@ -62,6 +111,12 @@ public class JpaBookingRepository implements BookingRepository {
         );
 
         return bookingProjection;
+    }
+
+    @Override
+    public List<Booking> findByUserName(String userName) {
+        var bookingProjections = bookingDao.findAllByUserProjection_Name(userName);
+        return mapToBookings(bookingProjections);
     }
 
     private List<SeatProjection> mapSeatsToSeatProjections(List<Seat> seats) {
