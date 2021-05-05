@@ -29,7 +29,7 @@ public class BookingService {
         this.userRepository = userRepository;
     }
 
-    public void saveBooking(String movieTitle, String roomName, Date startTime, List<Seat> seats) {
+    public Booking saveBooking(String movieTitle, String roomName, Date startTime, List<Seat> seats) {
         Screening screening = screeningRepository.findByMovieTitleAndRoomNameAndStartTime(
                 movieTitle,
                 roomName,
@@ -48,6 +48,8 @@ public class BookingService {
         checkIfAnySeatIsAlreadyBooked(booking);
 
         bookingRepository.saveBooking(booking);
+
+        return booking;
     }
 
     private void checkSeatOverflow(Booking booking) {
