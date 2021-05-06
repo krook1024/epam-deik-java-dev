@@ -877,16 +877,6 @@
     </orderEntry>
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-security:2.4.3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.4.3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.4.3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.4.3" level="project" />
-    <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
-    <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.3" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-to-slf4j:2.13.3" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.13.3" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.30" level="project" />
-    <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:1.3.5" level="project" />
-    <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.27" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:5.4.5" level="project" />
@@ -895,6 +885,19 @@
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:5.4.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.4" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.4.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.4.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.4.3" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.4.3" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-to-slf4j:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.13.3" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.30" level="project" />
+    <orderEntry type="library" name="Maven: jakarta.annotation:jakarta.annotation-api:1.3.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.4" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.4" level="project" />
+    <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.27" level="project" />
     <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.7.1" level="project" />
     <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
@@ -947,7 +950,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-junit-jupiter:3.6.28" level="project" />
     <orderEntry type="library" name="Maven: javax.annotation:javax.annotation-api:1.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-test:2.4.5" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.4.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.20" level="project" />
     <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:2.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.mockito:mockito-core:3.6.28" level="project" />
@@ -968,9 +970,8 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-params:5.7.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.skyscreamer:jsonassert:1.5.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-core:5.3.4" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-configuration-processor:2.4.3" level="project" />
   </component>
 </module>

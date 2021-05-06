@@ -1,12 +1,12 @@
 package com.epam.training.ticketservice.domain;
 
+import com.epam.training.ticketservice.presentation.cli.DateConverterComponent;
 import java.util.Iterator;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Value;
 
 @Getter
 @AllArgsConstructor
@@ -20,8 +20,7 @@ public class Booking {
 
     private final List<Seat> seats;
 
-    @Value("${ticket-service.base-ticket-price}")
-    private static int screeningPrice;
+    private static final int screeningPrice = 1500;
 
     @Override
     public String toString() {
@@ -39,10 +38,10 @@ public class Booking {
             }
         }
 
-        sb.append(" on " + screening.getMovie().getTitle());
-        sb.append(" in room " + screening.getRoom().getName());
-        sb.append(" at " + screening.getStartTime());
-        sb.append(" for " + (screeningPrice * seats.size()) + " HUF");
+        sb.append(" on ").append(screening.getMovie().getTitle());
+        sb.append(" in room ").append(screening.getRoom().getName());
+        sb.append(" at ").append(new DateConverterComponent().convertBack(screening.getStartTime()));
+        sb.append(" for ").append(screeningPrice * seats.size()).append(" HUF");
 
         return sb.toString();
     }

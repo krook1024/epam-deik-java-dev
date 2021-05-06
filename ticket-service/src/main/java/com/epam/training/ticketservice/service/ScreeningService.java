@@ -9,14 +9,12 @@ import com.epam.training.ticketservice.repository.ScreeningRepository;
 import java.util.Date;
 import java.util.List;
 import org.apache.commons.lang3.time.DateUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ScreeningService {
 
-    @Value("${ticket-service.base-ticket-price}")
-    private static int breakPeriodLength;
+    private static final int breakPeriodLength = 10;
     private final ScreeningRepository screeningRepository;
     private final MovieRepository movieRepository;
     private final RoomRepository roomRepository;

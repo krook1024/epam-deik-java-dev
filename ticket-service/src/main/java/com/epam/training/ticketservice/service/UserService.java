@@ -25,7 +25,7 @@ public class UserService implements UserDetailsService {
         builder.password(user.getPassword());
 
         if (user.getIsAdmin()) {
-            builder.roles("USER", "ADMIN");
+            builder.roles("ADMIN");
         } else {
             builder.roles("USER");
         }

@@ -19,40 +19,34 @@ public abstract class SecuredCommandHandler {
     }
 
     public Availability isAdmin() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        if (!(authentication instanceof UsernamePasswordAuthenticationToken)) {
-            return Availability.unavailable("you are not signed in. Please sign in to use this command");
+        if (!isUserSignedIn().isAvailable()) {
+            return isUserSignedIn();
         }
 
-        return checkAuthorities(authentication, false);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
+            return Availability.available();
+        }
+
+        return Availability.unavailable(
+            "you are not an administrator. Please sign in as an administrator to use this command"
+        );
     }
 
     public Availability isRegular() {
+        if (!isUserSignedIn().isAvailable()) {
+            return isUserSignedIn();
+        }
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (!(authentication instanceof UsernamePasswordAuthenticationToken)) {
-            return Availability.unavailable("you are not signed in. Please sign in to use this command");
+        if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER"))) {
+            return Availability.available();
         }
 
-        return checkAuthorities(authentication, true);
-    }
-
-    private Availability checkAuthorities(Authentication authentication, Boolean acceptRegular) {
-        if (acceptRegular) {
-            if (!authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
-                return Availability.unavailable(
-                    "you are not a regular user. Please sign in as a regular user to use this command"
-                );
-            }
-        } else {
-            if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
-                return Availability.unavailable(
-                    "you are not an administrator. Please sign in as an administrator to usethis command"
-                );
-            }
-        }
-
-        return Availability.available();
+        return Availability.unavailable(
+            "you are not a regular user. Please sign in as a regular user to use this command"
+        );
     }
 }

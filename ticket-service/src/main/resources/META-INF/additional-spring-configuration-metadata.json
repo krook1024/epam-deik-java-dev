@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "ticket-service.base-ticket-price",
+      "type": "java.lang.Integer",
+      "description": "Price per movie per seat."
+    },
+    {
+      "name": "ticket-service.break-period-length",
+      "type": "java.lang.Integer",
+      "description": "Length to wait between movies."
+    }
+  ]
+}

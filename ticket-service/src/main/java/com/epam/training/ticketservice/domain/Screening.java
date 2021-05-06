@@ -1,5 +1,6 @@
 package com.epam.training.ticketservice.domain;
 
+import com.epam.training.ticketservice.presentation.cli.DateConverterComponent;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -16,6 +17,7 @@ public class Screening {
 
     @Override
     public String toString() {
-        return movie + ", screened in room " + room.getName() + ", at " + startTime;
+        return movie + ", screened in room " + room.getName() + ", at " + new DateConverterComponent()
+            .convertBack(startTime);
     }
 }

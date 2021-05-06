@@ -1,5 +1,12 @@
 package com.epam.training.ticketservice.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+
 import com.epam.training.ticketservice.domain.User;
 import com.epam.training.ticketservice.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,10 +15,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
 
 class UserServiceTest {
 
@@ -37,7 +40,7 @@ class UserServiceTest {
         verify(userRepository, times(1)).findByName("admin");
 
         assertTrue(userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN")));
-        assertTrue(userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER")));
+        assertFalse(userDetails.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER")));
         assertEquals(userDetails.getPassword(), "admin");
         assertEquals(userDetails.getUsername(), "admin");
     }
