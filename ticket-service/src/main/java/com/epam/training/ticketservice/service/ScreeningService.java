@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class ScreeningService {
 
     @Value("${ticket-service.base-ticket-price}")
-    private final int BREAK_PERIOD_LENGTH = 10;
+    private static int breakPeriodLength;
     private final ScreeningRepository screeningRepository;
     private final MovieRepository movieRepository;
     private final RoomRepository roomRepository;
@@ -62,7 +62,7 @@ public class ScreeningService {
             if (screening.getRoom().getName().equals(roomName)) {
                 Date screeningStartTime = screening.getStartTime();
                 Date screeningEnd = DateUtils.addMinutes(screeningStartTime, screening.getMovie().getLength());
-                Date screeningBreakPeriodEnd = DateUtils.addMinutes(screeningEnd, BREAK_PERIOD_LENGTH);
+                Date screeningBreakPeriodEnd = DateUtils.addMinutes(screeningEnd, breakPeriodLength);
 
                 Date desiredEndTime = DateUtils.addMinutes(desiredStartTime, length);
 
