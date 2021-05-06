@@ -1,5 +1,6 @@
 ticket-service:
     base-ticket-price: 1500
+    break-period-length: 10
 spring:
     jpa:
         hibernate:
