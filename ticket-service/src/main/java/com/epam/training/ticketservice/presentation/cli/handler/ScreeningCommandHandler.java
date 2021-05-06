@@ -25,7 +25,7 @@ public class ScreeningCommandHandler extends SecuredCommandHandler {
     }
 
     @ShellMethod(key = "create screening", value = "Creates a screening")
-    @ShellMethodAvailability("isUserSignedIn")
+    @ShellMethodAvailability("isAdmin")
     public void createScreening(String movieTitle, String roomName, Date date) {
         try {
             screeningService.createScreening(movieTitle, roomName, date);
@@ -35,7 +35,7 @@ public class ScreeningCommandHandler extends SecuredCommandHandler {
     }
 
     @ShellMethod(key = "delete screening", value = "Deletes a screening")
-    @ShellMethodAvailability("isUserSignedIn")
+    @ShellMethodAvailability("isAdmin")
     public void deleteScreening(String movieTitle, String roomName, Date date) {
         screeningService.deleteScreening(movieTitle, roomName, date);
     }

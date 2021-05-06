@@ -1,5 +1,6 @@
 package com.epam.training.ticketservice.presentation.cli.handler;
 
+import com.epam.training.ticketservice.auth.SecuredCommandHandler;
 import com.epam.training.ticketservice.domain.Booking;
 import com.epam.training.ticketservice.domain.Seat;
 import com.epam.training.ticketservice.service.BookingService;
@@ -10,10 +11,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
+import org.springframework.shell.standard.ShellMethodAvailability;
 
 @ShellComponent
 @ShellCommandGroup("Booking commands")
-public class BookingCommandHandler {
+public class BookingCommandHandler extends SecuredCommandHandler {
 
     @Value("${ticket-service.base-ticket-price}")
     private int screeningPrice;
@@ -25,20 +27,21 @@ public class BookingCommandHandler {
     }
 
     @ShellMethod(key = "book", value = "Book a ticket to a screening")
-    public void book(String movieTitle, String roomName, Date startTime, List<Seat> seats) {
+    @ShellMethodAvailability("isRegular")
+    public String book(String movieTitle, String roomName, Date startTime, List<Seat> seats) {
         try {
             Booking booking = bookingService.saveBooking(movieTitle,
                 roomName,
                 startTime,
                 seats);
 
-            System.out.println(mapSeatsToString(seats));
+            return mapBookingToString(seats);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            return e.getMessage();
         }
     }
 
-    private String mapSeatsToString(List<Seat> seats) {
+    private String mapBookingToString(List<Seat> seats) {
         StringBuilder sb = new StringBuilder("Seats booked: ");
         Iterator<Seat> seatIterator = seats.iterator();
         while (seatIterator.hasNext()) {
@@ -49,7 +52,7 @@ public class BookingCommandHandler {
                 sb.append(", ");
             }
         }
-        sb.append("; the price for this booking is " + seats.size() * screeningPrice + " HUF");
+        sb.append("; the price for this booking is ").append(seats.size() * screeningPrice).append(" HUF");
         return sb.toString();
     }
 }

@@ -18,6 +18,16 @@ public abstract class SecuredCommandHandler {
         return Availability.available();
     }
 
+    public Availability isUserSignedOut() {
+        boolean result = isUserSignedIn().isAvailable();
+
+        if (result) {
+            return Availability.unavailable("you are signed in. Please signed out before executing this command");
+        }
+
+        return Availability.available();
+    }
+
     public Availability isAdmin() {
         if (!isUserSignedIn().isAvailable()) {
             return isUserSignedIn();

@@ -24,20 +24,20 @@ public class MovieCommandHandler extends SecuredCommandHandler {
     }
 
     @ShellMethod(value = "Creates a movie", key = "create movie")
-    @ShellMethodAvailability("isUserSignedIn")
+    @ShellMethodAvailability("isAdmin")
     public void createMovie(String title, String genre, int length) {
         movieService.saveMovie(title, genre, length);
     }
 
     @ShellMethod(value = "Updates a movie", key = "update movie")
-    @ShellMethodAvailability("isUserSignedIn")
+    @ShellMethodAvailability("isAdmin")
     public void updateMovie(String title, String genre, int length) {
         Movie movie = new Movie(title, genre, length);
         movieRepository.update(title, movie);
     }
 
     @ShellMethod(value = "Deletes a movie", key = "delete movie")
-    @ShellMethodAvailability("isUserSignedIn")
+    @ShellMethodAvailability("isAdmin")
     public void deleteMovie(String title) {
         movieRepository.delete(title);
     }

@@ -23,20 +23,20 @@ public class RoomCommandHandler extends SecuredCommandHandler {
     }
 
     @ShellMethod(value = "Creates a room", key = "create room")
-    @ShellMethodAvailability("isUserSignedIn")
+    @ShellMethodAvailability("isAdmin")
     public void createRoom(String name, int rows, int cols) {
         roomService.saveRoom(name, rows, cols);
     }
 
     @ShellMethod(value = "Updates a room", key = "update room")
-    @ShellMethodAvailability("isUserSignedIn")
+    @ShellMethodAvailability("isAdmin")
     public void updateRoom(String name, int rows, int cols) {
         Room room = new Room(name, rows, cols);
         roomService.updateRoom(name, room);
     }
 
     @ShellMethod(value = "Deletes a room", key = "delete room")
-    @ShellMethodAvailability("isUserSignedIn")
+    @ShellMethodAvailability("isAdmin")
     public void deleteRoom(String name) {
         roomRepository.delete(name);
     }
