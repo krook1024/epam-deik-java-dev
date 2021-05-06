@@ -8,7 +8,9 @@ import lombok.Getter;
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Seat {
-    private final int row, col;
+
+    private final int row;
+    private final int col;
 
     @Override
     public String toString() {

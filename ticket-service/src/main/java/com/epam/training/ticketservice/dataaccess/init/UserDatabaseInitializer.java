@@ -2,15 +2,14 @@ package com.epam.training.ticketservice.dataaccess.init;
 
 import com.epam.training.ticketservice.dataaccess.dao.UserDao;
 import com.epam.training.ticketservice.dataaccess.projection.UserProjection;
-import org.springframework.stereotype.Component;
-
-import javax.annotation.PostConstruct;
 import java.util.Optional;
+import javax.annotation.PostConstruct;
+import org.springframework.stereotype.Component;
 
 @Component
 public class UserDatabaseInitializer {
 
-    private UserDao userDao;
+    private final UserDao userDao;
 
     public UserDatabaseInitializer(UserDao userDao) {
         this.userDao = userDao;
@@ -22,7 +21,7 @@ public class UserDatabaseInitializer {
 
         if (userProjectionOptional.isEmpty()) {
             userDao.save(
-                    new UserProjection(null, "admin", "admin", true)
+                new UserProjection(null, "admin", "admin", true)
             );
         }
 

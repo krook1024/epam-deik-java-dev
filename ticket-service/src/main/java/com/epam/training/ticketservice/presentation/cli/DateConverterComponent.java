@@ -1,11 +1,10 @@
 package com.epam.training.ticketservice.presentation.cli;
 
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 @Component
 public class DateConverterComponent implements Converter<String, Date> {

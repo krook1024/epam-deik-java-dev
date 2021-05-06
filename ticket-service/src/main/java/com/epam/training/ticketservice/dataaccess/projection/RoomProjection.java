@@ -1,19 +1,19 @@
 package com.epam.training.ticketservice.dataaccess.projection;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoomProjection {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -21,7 +21,7 @@ public class RoomProjection {
     @Column(unique = true)
     String name;
 
-    @Column(name = "rowcount")
+    @Column(name = "rowCount")
     int rows;
 
     int cols;

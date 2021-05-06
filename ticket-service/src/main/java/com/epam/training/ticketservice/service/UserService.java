@@ -1,6 +1,5 @@
 package com.epam.training.ticketservice.service;
 
-import com.epam.training.ticketservice.dataaccess.projection.UserProjection;
 import com.epam.training.ticketservice.domain.User;
 import com.epam.training.ticketservice.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService implements UserDetailsService {
+
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
@@ -21,7 +21,7 @@ public class UserService implements UserDetailsService {
         User user = userRepository.findByName(username);
 
         org.springframework.security.core.userdetails.User.UserBuilder builder =
-                org.springframework.security.core.userdetails.User.withUsername(username);
+            org.springframework.security.core.userdetails.User.withUsername(username);
         builder.password(user.getPassword());
 
         if (user.getIsAdmin()) {

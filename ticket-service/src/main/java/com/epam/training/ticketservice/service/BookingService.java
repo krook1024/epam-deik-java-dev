@@ -7,23 +7,23 @@ import com.epam.training.ticketservice.domain.User;
 import com.epam.training.ticketservice.repository.BookingRepository;
 import com.epam.training.ticketservice.repository.ScreeningRepository;
 import com.epam.training.ticketservice.repository.UserRepository;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
 
 @Service
 public class BookingService {
-    private BookingRepository bookingRepository;
-    private ScreeningRepository screeningRepository;
-    private UserRepository userRepository;
+
+    private final BookingRepository bookingRepository;
+    private final ScreeningRepository screeningRepository;
+    private final UserRepository userRepository;
 
     public BookingService(BookingRepository bookingRepository,
-                          ScreeningRepository screeningRepository,
-                          UserRepository userRepository) {
+        ScreeningRepository screeningRepository,
+        UserRepository userRepository) {
         this.bookingRepository = bookingRepository;
         this.screeningRepository = screeningRepository;
         this.userRepository = userRepository;
@@ -31,17 +31,17 @@ public class BookingService {
 
     public Booking saveBooking(String movieTitle, String roomName, Date startTime, List<Seat> seats) {
         Screening screening = screeningRepository.findByMovieTitleAndRoomNameAndStartTime(
-                movieTitle,
-                roomName,
-                startTime
+            movieTitle,
+            roomName,
+            startTime
         );
 
         User user = userRepository.findByName(SecurityContextHolder.getContext().getAuthentication().getName());
 
         Booking booking = new Booking(
-                screening,
-                user,
-                seats
+            screening,
+            user,
+            seats
         );
 
         checkSeatOverflow(booking);
@@ -58,19 +58,20 @@ public class BookingService {
 
         for (Seat seat : booking.getSeats()) {
             if (maximumRowNumber < seat.getRow() || maximumColNumber < seat.getCol()) {
-                throw new IllegalArgumentException("Seat " + seat.getRow() + "," + seat.getCol() + " does not exist " +
-                        "in this room");
+                throw new IllegalArgumentException(
+                    "Seat " + seat.getRow() + "," + seat.getCol() + " does not exist in this room"
+                );
             }
         }
     }
 
     private void checkIfAnySeatIsAlreadyBooked(Booking booking) {
         var seats = bookingRepository
-                .findAllByScreening(booking.getScreening())
-                .stream()
-                .map(Booking::getSeats)
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
+            .findAllByScreening(booking.getScreening())
+            .stream()
+            .map(Booking::getSeats)
+            .flatMap(Collection::stream)
+            .collect(Collectors.toList());
 
         for (Seat seat : seats) {
             if (booking.getSeats().contains(seat)) {

@@ -4,10 +4,9 @@ import com.epam.training.ticketservice.domain.Movie;
 import com.epam.training.ticketservice.repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class MovieService {
+
     private final MovieRepository movieRepository;
 
     public MovieService(MovieRepository movieRepository) {

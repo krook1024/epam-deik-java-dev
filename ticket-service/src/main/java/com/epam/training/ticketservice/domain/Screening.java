@@ -1,10 +1,9 @@
 package com.epam.training.ticketservice.domain;
 
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-
-import java.util.Date;
 
 @Getter
 @AllArgsConstructor

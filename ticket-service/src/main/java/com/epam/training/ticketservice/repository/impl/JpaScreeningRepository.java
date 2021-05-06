@@ -11,12 +11,11 @@ import com.epam.training.ticketservice.domain.Movie;
 import com.epam.training.ticketservice.domain.Room;
 import com.epam.training.ticketservice.domain.Screening;
 import com.epam.training.ticketservice.repository.ScreeningRepository;
-import org.springframework.stereotype.Repository;
-
-import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class JpaScreeningRepository implements ScreeningRepository {
@@ -29,8 +28,8 @@ public class JpaScreeningRepository implements ScreeningRepository {
 
 
     public JpaScreeningRepository(ScreeningDao screeningDao,
-                                  MovieDao movieDao,
-                                  RoomDao roomDao) {
+        MovieDao movieDao,
+        RoomDao roomDao) {
         this.screeningDao = screeningDao;
         this.movieDao = movieDao;
         this.roomDao = roomDao;
@@ -57,18 +56,18 @@ public class JpaScreeningRepository implements ScreeningRepository {
 
     protected List<Screening> mapToScreenings(List<ScreeningProjection> screeningProjections) {
         return screeningProjections.stream()
-                .map(this::mapToScreening)
-                .collect(Collectors.toList());
+            .map(this::mapToScreening)
+            .collect(Collectors.toList());
     }
 
     @Override
     public Screening findByMovieTitleAndRoomNameAndStartTime(String movieTitle, String roomName, Date startTime) {
         ScreeningProjection screeningProjection = screeningDao
-                .findById_MovieProjection_TitleAndId_RoomProjection_NameAndId_StartTime(
-                        movieTitle,
-                        roomName,
-                        startTime
-                ).orElseThrow(() -> new IllegalArgumentException("This is not a valid screening"));
+            .findById_MovieProjection_TitleAndId_RoomProjection_NameAndId_StartTime(
+                movieTitle,
+                roomName,
+                startTime
+            ).orElseThrow(() -> new IllegalArgumentException("This is not a valid screening"));
 
         return mapToScreening(screeningProjection);
     }
@@ -79,27 +78,27 @@ public class JpaScreeningRepository implements ScreeningRepository {
         Date startTime = screeningProjection.getId().getStartTime();
 
         Movie movie = new Movie(movieProjection.getTitle(),
-                movieProjection.getGenre(),
-                movieProjection.getLength());
+            movieProjection.getGenre(),
+            movieProjection.getLength());
         Room room = new Room(roomProjection.getName(),
-                roomProjection.getRows(),
-                roomProjection.getCols());
+            roomProjection.getRows(),
+            roomProjection.getCols());
 
         return new Screening(movie, room, startTime);
     }
 
     protected ScreeningProjection mapToScreeningProjection(Screening screening) throws IllegalArgumentException {
         MovieProjection movieProjection = movieDao.findByTitle(screening.getMovie().getTitle()).orElseThrow(
-                () -> new IllegalArgumentException("No movie can be found for name " + screening.getMovie().getTitle())
+            () -> new IllegalArgumentException("No movie can be found for name " + screening.getMovie().getTitle())
         );
 
         RoomProjection roomProjection = roomDao.findByName(screening.getRoom().getName()).orElseThrow(
-                () -> new IllegalArgumentException("No room can be found for name " + screening.getMovie().getTitle())
+            () -> new IllegalArgumentException("No room can be found for name " + screening.getMovie().getTitle())
         );
 
         EmbeddedScreeningId embeddedScreeningId = new EmbeddedScreeningId(movieProjection,
-                roomProjection,
-                screening.getStartTime());
+            roomProjection,
+            screening.getStartTime());
 
         return new ScreeningProjection(embeddedScreeningId);
     }

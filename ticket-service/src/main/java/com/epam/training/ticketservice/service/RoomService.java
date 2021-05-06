@@ -4,10 +4,9 @@ import com.epam.training.ticketservice.domain.Room;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class RoomService {
+
     private final RoomRepository roomRepository;
 
     public RoomService(RoomRepository roomRepository) {

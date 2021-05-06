@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class JpaUserRepository implements UserRepository {
+
     private final UserDao userDao;
 
     public JpaUserRepository(UserDao userDao) {
@@ -18,21 +19,21 @@ public class JpaUserRepository implements UserRepository {
     @Override
     public User findByName(String name) throws UsernameNotFoundException {
         UserProjection userProjection = userDao.findByName(name).orElseThrow(
-                () -> new UsernameNotFoundException("Username not found for name " + name)
+            () -> new UsernameNotFoundException("Username not found for name " + name)
         );
 
         return new User(userProjection.getName(),
-                userProjection.getPassword(),
-                userProjection.getIsAdmin());
+            userProjection.getPassword(),
+            userProjection.getIsAdmin());
     }
 
     @Override
     public void save(User user) {
         userDao.save(new UserProjection(
-                null,
-                user.getName(),
-                user.getPassword(),
-                user.getIsAdmin()
+            null,
+            user.getName(),
+            user.getPassword(),
+            user.getIsAdmin()
         ));
     }
 }

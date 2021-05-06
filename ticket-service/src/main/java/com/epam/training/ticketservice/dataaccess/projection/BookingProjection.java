@@ -1,24 +1,27 @@
 package com.epam.training.ticketservice.dataaccess.projection;
 
+import java.util.List;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class BookingProjection {
-    @Id
-    @GeneratedValue
-    private Long id;
 
     @ManyToOne
     ScreeningProjection screeningProjection;
-
+    @Id
+    @GeneratedValue
+    private Long id;
     @ManyToOne
     private UserProjection userProjection;
 

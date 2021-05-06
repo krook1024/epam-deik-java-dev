@@ -3,13 +3,22 @@ package com.epam.training.ticketservice.repository.impl;
 import com.epam.training.ticketservice.dataaccess.dao.BookingDao;
 import com.epam.training.ticketservice.dataaccess.dao.ScreeningDao;
 import com.epam.training.ticketservice.dataaccess.dao.UserDao;
-import com.epam.training.ticketservice.dataaccess.projection.*;
-import com.epam.training.ticketservice.domain.*;
+import com.epam.training.ticketservice.dataaccess.projection.BookingProjection;
+import com.epam.training.ticketservice.dataaccess.projection.EmbeddedScreeningId;
+import com.epam.training.ticketservice.dataaccess.projection.MovieProjection;
+import com.epam.training.ticketservice.dataaccess.projection.RoomProjection;
+import com.epam.training.ticketservice.dataaccess.projection.SeatProjection;
+import com.epam.training.ticketservice.dataaccess.projection.UserProjection;
+import com.epam.training.ticketservice.domain.Booking;
+import com.epam.training.ticketservice.domain.Movie;
+import com.epam.training.ticketservice.domain.Room;
+import com.epam.training.ticketservice.domain.Screening;
+import com.epam.training.ticketservice.domain.Seat;
+import com.epam.training.ticketservice.domain.User;
 import com.epam.training.ticketservice.repository.BookingRepository;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class JpaBookingRepository implements BookingRepository {
@@ -34,11 +43,11 @@ public class JpaBookingRepository implements BookingRepository {
     @Override
     public List<Booking> findAllByScreening(Screening screening) {
         return mapToBookings(bookingDao.findAllByScreeningProjection(
-                screeningDao.findById_MovieProjection_TitleAndId_RoomProjection_NameAndId_StartTime(
-                        screening.getMovie().getTitle(),
-                        screening.getRoom().getName(),
-                        screening.getStartTime()
-                ).orElseThrow(() -> new IllegalArgumentException("Screening cannot be found"))
+            screeningDao.findById_MovieProjection_TitleAndId_RoomProjection_NameAndId_StartTime(
+                screening.getMovie().getTitle(),
+                screening.getRoom().getName(),
+                screening.getStartTime()
+            ).orElseThrow(() -> new IllegalArgumentException("Screening cannot be found"))
         ));
     }
 
@@ -54,35 +63,35 @@ public class JpaBookingRepository implements BookingRepository {
         RoomProjection roomProjection = embeddedScreeningId.getRoomProjection();
 
         builder.screening(
-                new Screening(
-                        new Movie(
-                                movieProjection.getTitle(),
-                                movieProjection.getGenre(),
-                                movieProjection.getLength()
-                        ),
-                        new Room(
-                                roomProjection.getName(),
-                                roomProjection.getRows(),
-                                roomProjection.getCols()
-                        ),
-                        embeddedScreeningId.getStartTime()
-                )
+            new Screening(
+                new Movie(
+                    movieProjection.getTitle(),
+                    movieProjection.getGenre(),
+                    movieProjection.getLength()
+                ),
+                new Room(
+                    roomProjection.getName(),
+                    roomProjection.getRows(),
+                    roomProjection.getCols()
+                ),
+                embeddedScreeningId.getStartTime()
+            )
         );
 
         builder.seats(
-                bookingProjection.getSeats().stream().map(
-                        seatProjection -> new Seat(seatProjection.getRowNum(), seatProjection.getColNum())
-                ).collect(Collectors.toList())
+            bookingProjection.getSeats().stream().map(
+                seatProjection -> new Seat(seatProjection.getRowNum(), seatProjection.getColNum())
+            ).collect(Collectors.toList())
         );
 
         UserProjection userProjection = bookingProjection.getUserProjection();
 
         builder.user(
-                new User(
-                        userProjection.getName(),
-                        userProjection.getPassword(),
-                        userProjection.getIsAdmin()
-                )
+            new User(
+                userProjection.getName(),
+                userProjection.getPassword(),
+                userProjection.getIsAdmin()
+            )
         );
 
         return builder.build();
@@ -95,19 +104,20 @@ public class JpaBookingRepository implements BookingRepository {
         bookingProjection.setSeats(seatProjections);
 
         bookingProjection.setUserProjection(
-                userDao.findByName(booking.getUser().getName()).orElseThrow(
-                        () -> new IllegalArgumentException("User cannot be found with the name" +
-                                booking.getUser().getName())
+            userDao.findByName(booking.getUser().getName()).orElseThrow(
+                () -> new IllegalArgumentException(
+                    "User cannot be found with the name" + booking.getUser().getName()
                 )
+            )
         );
 
         Screening screening = booking.getScreening();
         bookingProjection.setScreeningProjection(
-                screeningDao.findById_MovieProjection_TitleAndId_RoomProjection_NameAndId_StartTime(
-                        screening.getMovie().getTitle(),
-                        screening.getRoom().getName(),
-                        screening.getStartTime()
-                ).orElseThrow(() -> new IllegalArgumentException("Screening cannot be found"))
+            screeningDao.findById_MovieProjection_TitleAndId_RoomProjection_NameAndId_StartTime(
+                screening.getMovie().getTitle(),
+                screening.getRoom().getName(),
+                screening.getStartTime()
+            ).orElseThrow(() -> new IllegalArgumentException("Screening cannot be found"))
         );
 
         return bookingProjection;
@@ -121,7 +131,7 @@ public class JpaBookingRepository implements BookingRepository {
 
     private List<SeatProjection> mapSeatsToSeatProjections(List<Seat> seats) {
         return seats.stream().map(
-                seat -> new SeatProjection(seat.getRow(), seat.getCol())
+            seat -> new SeatProjection(seat.getRow(), seat.getCol())
         ).collect(Collectors.toList());
     }
 }

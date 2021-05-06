@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.shell.Availability;
 
 public abstract class SecuredCommandHandler {
+
     public Availability isUserSignedIn() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -41,13 +42,13 @@ public abstract class SecuredCommandHandler {
         if (acceptRegular) {
             if (!authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
                 return Availability.unavailable(
-                        "you are not a regular user. Please sign in as a regular user to use this command"
+                    "you are not a regular user. Please sign in as a regular user to use this command"
                 );
             }
         } else {
             if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
                 return Availability.unavailable(
-                        "you are not an administrator. Please sign in as an administrator to usethis command"
+                    "you are not an administrator. Please sign in as an administrator to usethis command"
                 );
             }
         }

@@ -1,10 +1,10 @@
 package com.epam.training.ticketservice.repository;
 
 import com.epam.training.ticketservice.domain.Room;
-
 import java.util.List;
 
 public interface RoomRepository {
+
     List<Room> findAll();
 
     Room findByName(String name);

@@ -6,26 +6,31 @@ import com.epam.training.ticketservice.domain.Screening;
 import com.epam.training.ticketservice.repository.MovieRepository;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import com.epam.training.ticketservice.repository.ScreeningRepository;
-import org.apache.commons.lang3.time.DateUtils;
-import org.springframework.stereotype.Service;
-
 import java.util.Date;
 import java.util.List;
+import org.apache.commons.lang3.time.DateUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ScreeningService {
 
-    public static final int BREAK_PERIOD_LENGTH = 10;
+    @Value("${ticket-service.base-ticket-price}")
+    private final int BREAK_PERIOD_LENGTH = 10;
     private final ScreeningRepository screeningRepository;
     private final MovieRepository movieRepository;
     private final RoomRepository roomRepository;
 
     public ScreeningService(ScreeningRepository screeningRepository,
-                            MovieRepository movieRepository,
-                            RoomRepository roomRepository) {
+        MovieRepository movieRepository,
+        RoomRepository roomRepository) {
         this.screeningRepository = screeningRepository;
         this.movieRepository = movieRepository;
         this.roomRepository = roomRepository;
+    }
+
+    public static boolean isOverlapping(Date start1, Date end1, Date start2, Date end2) {
+        return !start1.after(end2) && !start2.after(end1);
     }
 
     public void createScreening(String movieTitle, String roomName, Date startTime) throws IllegalArgumentException {
@@ -48,7 +53,9 @@ public class ScreeningService {
         screeningRepository.deleteScreening(screening);
     }
 
-    private void checkScreeningOverlap(String roomName, Date desiredStartTime, int length) throws IllegalArgumentException {
+    private void checkScreeningOverlap(String roomName,
+        Date desiredStartTime,
+        int length) throws IllegalArgumentException {
         List<Screening> screenings = screeningRepository.findAll();
 
         screenings.forEach(screening -> {
@@ -65,14 +72,10 @@ public class ScreeningService {
 
                 if (isOverlapping(screeningStartTime, screeningBreakPeriodEnd, desiredStartTime, desiredEndTime)) {
                     throw new IllegalArgumentException(
-                            "This would start in the break period after another screening in this room"
+                        "This would start in the break period after another screening in this room"
                     );
                 }
             }
         });
-    }
-
-    public static boolean isOverlapping(Date start1, Date end1, Date start2, Date end2) {
-        return !start1.after(end2) && !start2.after(end1);
     }
 }

@@ -4,11 +4,10 @@ import com.epam.training.ticketservice.dataaccess.dao.RoomDao;
 import com.epam.training.ticketservice.dataaccess.projection.RoomProjection;
 import com.epam.training.ticketservice.domain.Room;
 import com.epam.training.ticketservice.repository.RoomRepository;
-import org.springframework.stereotype.Repository;
-
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class JpaRoomRepository implements RoomRepository {
@@ -22,27 +21,27 @@ public class JpaRoomRepository implements RoomRepository {
     @Override
     public List<Room> findAll() {
         return roomDao.findAll()
-                .stream()
-                .map(
-                        roomProjection -> new Room(
-                                roomProjection.getName(),
-                                roomProjection.getRows(),
-                                roomProjection.getCols()
-                        )
+            .stream()
+            .map(
+                roomProjection -> new Room(
+                    roomProjection.getName(),
+                    roomProjection.getRows(),
+                    roomProjection.getCols()
                 )
-                .collect(Collectors.toList());
+            )
+            .collect(Collectors.toList());
     }
 
     @Override
     public Room findByName(String name) {
         RoomProjection roomProjection = roomDao.findByName(name).orElseThrow(
-                () -> new IllegalArgumentException("No room can be found with this name")
+            () -> new IllegalArgumentException("No room can be found with this name")
         );
 
         return new Room(
-                roomProjection.getName(),
-                roomProjection.getRows(),
-                roomProjection.getCols()
+            roomProjection.getName(),
+            roomProjection.getRows(),
+            roomProjection.getCols()
         );
     }
 
@@ -55,7 +54,7 @@ public class JpaRoomRepository implements RoomRepository {
     @Transactional
     public void update(String name, Room room) {
         RoomProjection roomProjection = roomDao.findByName(name).orElseThrow(
-                () -> new IllegalArgumentException("No room can be found with this name")
+            () -> new IllegalArgumentException("No room can be found with this name")
         );
 
         roomProjection.setRows(room.getRows());

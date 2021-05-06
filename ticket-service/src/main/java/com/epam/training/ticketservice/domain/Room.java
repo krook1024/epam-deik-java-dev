@@ -1,13 +1,14 @@
 package com.epam.training.ticketservice.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Room {
+
     private final String name;
     private final int rows;
     private final int cols;

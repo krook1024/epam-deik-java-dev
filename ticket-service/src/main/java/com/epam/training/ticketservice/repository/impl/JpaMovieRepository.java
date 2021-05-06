@@ -4,11 +4,10 @@ import com.epam.training.ticketservice.dataaccess.dao.MovieDao;
 import com.epam.training.ticketservice.dataaccess.projection.MovieProjection;
 import com.epam.training.ticketservice.domain.Movie;
 import com.epam.training.ticketservice.repository.MovieRepository;
-import org.springframework.stereotype.Repository;
-
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class JpaMovieRepository implements MovieRepository {
@@ -22,21 +21,21 @@ public class JpaMovieRepository implements MovieRepository {
     @Override
     public List<Movie> findAll() {
         return movieDao.findAll()
-                .stream()
-                .map(
-                        movieProjection -> new Movie(
-                                movieProjection.getTitle(),
-                                movieProjection.getGenre(),
-                                movieProjection.getLength()
-                        )
+            .stream()
+            .map(
+                movieProjection -> new Movie(
+                    movieProjection.getTitle(),
+                    movieProjection.getGenre(),
+                    movieProjection.getLength()
                 )
-                .collect(Collectors.toList());
+            )
+            .collect(Collectors.toList());
     }
 
     @Override
     public Movie findByTitle(String title) {
         MovieProjection movieProjection = movieDao.findByTitle(title).orElseThrow(
-                () -> new IllegalArgumentException("No movie can be found with the title " + title)
+            () -> new IllegalArgumentException("No movie can be found with the title " + title)
         );
 
         return mapToMovie(movieProjection);
@@ -51,7 +50,7 @@ public class JpaMovieRepository implements MovieRepository {
     @Transactional
     public void update(String title, Movie movie) {
         MovieProjection movieProjection = movieDao.findByTitle(title).orElseThrow(
-                () -> new IllegalArgumentException("No movie can be found with the title " + title)
+            () -> new IllegalArgumentException("No movie can be found with the title " + title)
         );
 
         movieProjection.setGenre(movie.getGenre());

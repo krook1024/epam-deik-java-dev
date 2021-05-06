@@ -4,12 +4,11 @@ import com.epam.training.ticketservice.auth.SecuredCommandHandler;
 import com.epam.training.ticketservice.domain.Room;
 import com.epam.training.ticketservice.repository.RoomRepository;
 import com.epam.training.ticketservice.service.RoomService;
+import java.util.List;
 import org.springframework.shell.standard.ShellCommandGroup;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
-
-import java.util.List;
 
 @ShellComponent
 @ShellCommandGroup("Room commands")

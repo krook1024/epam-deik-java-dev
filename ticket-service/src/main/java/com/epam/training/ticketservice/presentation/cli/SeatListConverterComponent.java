@@ -1,12 +1,11 @@
 package com.epam.training.ticketservice.presentation.cli;
 
 import com.epam.training.ticketservice.domain.Seat;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 
 @Component
 public class SeatListConverterComponent implements Converter<String, List<Seat>> {

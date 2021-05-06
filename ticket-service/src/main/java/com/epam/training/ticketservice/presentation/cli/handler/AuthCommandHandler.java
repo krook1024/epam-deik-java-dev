@@ -4,6 +4,8 @@ import com.epam.training.ticketservice.auth.SecuredCommandHandler;
 import com.epam.training.ticketservice.domain.Booking;
 import com.epam.training.ticketservice.repository.BookingRepository;
 import com.epam.training.ticketservice.service.UserService;
+import java.util.Collection;
+import java.util.List;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,19 +18,17 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 
-import java.util.Collection;
-import java.util.List;
-
 @ShellComponent
 @ShellCommandGroup("Authentication Commands")
 public class AuthCommandHandler extends SecuredCommandHandler {
+
     AuthenticationManager authenticationManager;
     UserService userService;
     BookingRepository bookingRepository;
 
     public AuthCommandHandler(AuthenticationManager authenticationManager,
-                              UserService userService,
-                              BookingRepository bookingRepository) {
+        UserService userService,
+        BookingRepository bookingRepository) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         this.bookingRepository = bookingRepository;
