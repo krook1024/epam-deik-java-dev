@@ -40,7 +40,7 @@ public class Booking {
 
         sb.append(" on ").append(screening.getMovie().getTitle());
         sb.append(" in room ").append(screening.getRoom().getName());
-        sb.append(" at ").append(new DateConverterComponent().convertBack(screening.getStartTime()));
+        sb.append(" starting at ").append(new DateConverterComponent().convertBack(screening.getStartTime()));
         sb.append(" for ").append(screeningPrice * seats.size()).append(" HUF");
 
         return sb.toString();

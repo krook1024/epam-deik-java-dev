@@ -75,7 +75,7 @@ public class BookingService {
 
         for (Seat seat : seats) {
             if (booking.getSeats().contains(seat)) {
-                throw new IllegalArgumentException("Seat " + seat.getRow() + "," + seat.getCol() + " is already taken");
+                throw new IllegalArgumentException("Seat " + seat + " is already taken");
             }
         }
     }
