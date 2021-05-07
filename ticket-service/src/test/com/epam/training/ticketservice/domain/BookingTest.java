@@ -42,7 +42,7 @@ class BookingTest {
         String string = underTest.toString();
 
         // Then
-        assertEquals("Seats (1,1), (1,2), (1,3) on Movie in room Room at 2020-01-01 10:00 for 4500 HUF",
+        assertEquals("Seats (1,1), (1,2), (1,3) on Movie in room Room starting at 2020-01-01 10:00 for 4500 HUF",
             string);
     }
 }
