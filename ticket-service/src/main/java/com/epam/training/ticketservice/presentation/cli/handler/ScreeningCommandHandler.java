@@ -42,6 +42,12 @@ public class ScreeningCommandHandler extends SecuredCommandHandler {
 
     @ShellMethod(key = "list screenings", value = "Lists screenings")
     public List<Screening> listScreenings() {
-        return screeningRepository.findAll();
+        List<Screening> screenings = screeningRepository.findAll();
+
+        if (screenings.isEmpty()) {
+            System.out.println("There are no screenings");
+        }
+
+        return screenings;
     }
 }
