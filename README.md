@@ -1,4 +1,4 @@
-# A félév végi beadandó program követelményei
+# A félév végi beadandó program követelményei [![Java CI with Maven](https://github.com/krook1024/epam-deik-java-dev/actions/workflows/maven.yml/badge.svg)](https://github.com/krook1024/epam-deik-java-dev/actions/workflows/maven.yml)
 
 Egy interaktív, parancssori alkalmazást fogsz elkészíteni, amely
 adminisztrációs és információs felületként fog működni egy filmszínház
