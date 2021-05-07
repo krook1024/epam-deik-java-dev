@@ -47,7 +47,7 @@ public class JpaRoomRepository implements RoomRepository {
 
     @Override
     public void saveRoom(Room room) {
-        roomDao.save(new RoomProjection(room.getName(), room.getCols(), room.getRows()));
+        roomDao.save(new RoomProjection(room.getName(), room.getRows(), room.getCols()));
     }
 
     @Override
