@@ -36,6 +36,7 @@ class SecuredCommandHandlerTest {
         assertFalse(underTest.isRegular().isAvailable());
         assertFalse(underTest.isAdmin().isAvailable());
         assertFalse(underTest.isUserSignedIn().isAvailable());
+        assertTrue(underTest.isUserSignedOut().isAvailable());
     }
 
 
@@ -59,6 +60,7 @@ class SecuredCommandHandlerTest {
         assertFalse(underTest.isRegular().isAvailable());
         assertTrue(underTest.isAdmin().isAvailable());
         assertTrue(underTest.isUserSignedIn().isAvailable());
+        assertFalse(underTest.isUserSignedOut().isAvailable());
     }
 
 
@@ -81,5 +83,6 @@ class SecuredCommandHandlerTest {
         assertTrue(underTest.isRegular().isAvailable());
         assertFalse(underTest.isAdmin().isAvailable());
         assertTrue(underTest.isUserSignedIn().isAvailable());
+        assertFalse(underTest.isUserSignedOut().isAvailable());
     }
 }

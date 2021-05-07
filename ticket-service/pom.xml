@@ -142,6 +142,7 @@
     </dependencyManagement>
 
     <build>
+        <testSourceDirectory>src/test/com/epam/training/ticketservice</testSourceDirectory>
         <plugins>
 
             <plugin>

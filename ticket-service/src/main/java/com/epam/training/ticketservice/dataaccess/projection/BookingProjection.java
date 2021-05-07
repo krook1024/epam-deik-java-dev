@@ -17,11 +17,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BookingProjection {
 
-    @ManyToOne
-    ScreeningProjection screeningProjection;
     @Id
     @GeneratedValue
     private Long id;
+
+    @ManyToOne
+    private ScreeningProjection screeningProjection;
+
     @ManyToOne
     private UserProjection userProjection;
 

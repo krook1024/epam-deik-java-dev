@@ -51,6 +51,12 @@ public class JpaBookingRepository implements BookingRepository {
         ));
     }
 
+    @Override
+    public List<Booking> findByUserName(String userName) {
+        var bookingProjections = bookingDao.findAllByUserProjection_Name(userName);
+        return mapToBookings(bookingProjections);
+    }
+
     private List<Booking> mapToBookings(List<BookingProjection> bookingProjections) {
         return bookingProjections.stream().map(this::mapToBooking).collect(Collectors.toList());
     }
@@ -121,12 +127,6 @@ public class JpaBookingRepository implements BookingRepository {
         );
 
         return bookingProjection;
-    }
-
-    @Override
-    public List<Booking> findByUserName(String userName) {
-        var bookingProjections = bookingDao.findAllByUserProjection_Name(userName);
-        return mapToBookings(bookingProjections);
     }
 
     private List<SeatProjection> mapSeatsToSeatProjections(List<Seat> seats) {
